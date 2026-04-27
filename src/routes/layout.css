@@ -1,0 +1,49 @@
+@import 'tailwindcss';
+
+@layer base {
+  :root {
+    --code-bg: hsl(0, 0%, 100%);
+    --code-text: hsl(0, 0%, 0%);
+    --code-keyword: hsl(288, 100%, 43%);
+    --code-string: hsl(0, 77%, 36%);
+    --code-string2: hsl(340, 61%, 31%);
+    --code-comment: hsl(120, 100%, 25%);
+    --code-variable: hsl(233, 100%, 25%);
+    --code-number: hsl(158, 87%, 28%);
+    --code-class: hsl(194, 60%, 37%);
+    --code-bool: hsl(240, 100%, 50%);
+    --code-meta: hsl(0, 0%, 0%);
+  }
+
+  .dark {
+    --code-bg: hsl(0, 0%, 12%);
+    --code-text: hsl(0, 0%, 78%);
+    --code-keyword: hsl(305, 35%, 65%);
+    --code-string: hsl(17, 47%, 64%);
+    --code-string2: hsl(0, 53%, 62%);
+    --code-comment: hsl(101, 29%, 47%);
+    --code-variable: hsl(201, 98%, 80%);
+    --code-number: hsl(99, 28%, 73%);
+    --code-class: hsl(168, 53%, 55%);
+    --code-bool: hsl(207, 61%, 59%);
+    --code-meta: hsl(0, 0%, 83%);
+  }
+}
+
+pre.cm-s-custom {
+  @apply font-mono text-sm leading-relaxed p-4 rounded-lg overflow-x-auto transition-colors duration-200;
+  background-color: var(--code-bg);
+  color: var(--code-text);
+}
+
+/* Lezer Token Mappings */
+.tok-keyword      { color: var(--code-keyword); }
+.tok-operator, .tok-punctuation { color: var(--code-text); }
+.tok-comment      { color: var(--code-comment); font-style: italic; }
+.tok-variableName, .tok-propertyName, .tok-atom { color: var(--code-variable); }
+.tok-className, .tok-typeName    { color: var(--code-class); }
+.tok-number       { color: var(--code-number); }
+.tok-string       { color: var(--code-string); }
+.tok-string2      { color: var(--code-string2); }
+.tok-bool         { color: var(--code-bool); }
+.tok-meta         { color: var(--code-meta); }
