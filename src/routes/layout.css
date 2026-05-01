@@ -27,10 +27,11 @@
     --code-class: hsl(168, 53%, 55%);
     --code-bool: hsl(207, 61%, 59%);
     --code-meta: hsl(0, 0%, 83%);
+    --code-angleBracket: hsl(0, 0%, 50%);
   }
 }
 
-pre.cm-s-custom {
+pre.cm-s-custom, .editor-shell {
   @apply font-mono text-sm leading-relaxed p-4 rounded-lg overflow-x-auto transition-colors duration-200;
   background-color: var(--code-bg);
   color: var(--code-text);
@@ -47,3 +48,4 @@ pre.cm-s-custom {
 .tok-string2      { color: var(--code-string2); }
 .tok-bool         { color: var(--code-bool); }
 .tok-meta         { color: var(--code-meta); }
+.tok-angleBracket { color: var(--code-angleBracket);}

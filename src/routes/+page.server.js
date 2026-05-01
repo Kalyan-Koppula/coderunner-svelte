@@ -35,6 +35,7 @@ export async function load() {
   );
 
   return {
+    rawCode: code,
     highlightedHtml: `<pre class="cm-s-custom">${htmlOutput}</pre>`
   };
 }

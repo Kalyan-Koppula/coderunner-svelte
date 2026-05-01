@@ -6,6 +6,9 @@
       "name": "lezer",
       "dependencies": {
         "@codemirror/lang-javascript": "^6.2.5",
+        "@codemirror/language": "^6.12.3",
+        "@codemirror/state": "^6.6.0",
+        "@codemirror/view": "^6.41.1",
         "@lezer/highlight": "^1.2.3",
         "@lezer/javascript": "^1.5.4",
         "@lezer/rust": "^1.0.2",
