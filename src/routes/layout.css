@@ -13,6 +13,12 @@
     --code-class: hsl(194, 60%, 37%);
     --code-bool: hsl(240, 100%, 50%);
     --code-meta: hsl(0, 0%, 0%);
+    --code-angleBracket: hsl(0, 100%, 25%);
+    --code-brace: hsl(229, 97%, 50%);
+    --code-separator: #000;
+    --code-definitionKeyword: hsl(240, 100%, 50%);
+    --code-paren: hsl(120, 50%, 38%);
+    --code-tagName: var(--code-angleBracket);
   }
 
   .dark {
@@ -28,24 +34,38 @@
     --code-bool: hsl(207, 61%, 59%);
     --code-meta: hsl(0, 0%, 83%);
     --code-angleBracket: hsl(0, 0%, 50%);
+    --code-brace: hsl(51, 100%, 50%);
+    --code-separator: hsl(0, 0%, 83%);
+    --code-definitionKeyword: hsl(207, 61%, 59%);
+    --code-paren: hsl(302, 59%, 65%);
+    --code-tagName: var(--code-definitionKeyword);
   }
 }
 
-pre.cm-s-custom, .editor-shell {
-  @apply font-mono text-sm leading-relaxed p-4 rounded-lg overflow-x-auto transition-colors duration-200;
+* {
+    box-sizing: border-box;
+}
+
+pre.cm-s-custom {
+  @apply font-mono text-sm leading-[1.4] p-4 rounded-lg overflow-x-auto transition-colors duration-200;
   background-color: var(--code-bg);
   color: var(--code-text);
 }
 
 /* Lezer Token Mappings */
-.tok-keyword      { color: var(--code-keyword); }
+.tok-keyword, .tok-moduleKeyword, .tok-controlKeyword, .tok-operatorKeyword  { color: var(--code-keyword); }
 .tok-operator, .tok-punctuation { color: var(--code-text); }
-.tok-comment      { color: var(--code-comment); font-style: italic; }
-.tok-variableName, .tok-propertyName, .tok-atom { color: var(--code-variable); }
-.tok-className, .tok-typeName    { color: var(--code-class); }
+.tok-comment, .tok-blockComment, .tok-lineComment     { color: var(--code-comment); }
+.tok-variableName, .tok-propertyName, .tok-attributeName, .tok-labelName { color: var(--code-variable); }
+.tok-className, .tok-typeName  { color: var(--code-class); }
 .tok-number       { color: var(--code-number); }
-.tok-string       { color: var(--code-string); }
-.tok-string2      { color: var(--code-string2); }
+.tok-string, .tok-attributeValue       { color: var(--code-string); }
+.tok-string2, .tok-regexp      { color: var(--code-string2); }
 .tok-bool         { color: var(--code-bool); }
 .tok-meta         { color: var(--code-meta); }
 .tok-angleBracket { color: var(--code-angleBracket);}
+.tok-brace, .tok-squareBracket { color: var(--code-brace);}
+.tok-separator, .tok-compareOperator, .tok-logicOperator, .tok-derefOperator, .tok-definitionOperator {color: var(--code-separator)}
+.tok-definitionKeyword, .tok-modifier, .tok-atom, .tok-self, .tok-null {color: var(--code-definitionKeyword);}
+.tok-tagName {color: var(--code-tagName);}
+.tok-paren {color: var(--code-paren);}
