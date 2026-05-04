@@ -1,4 +1,4 @@
-export const code = `
+export const code = {jsx:  `
 #!/usr/bin/env node
 /**
  * BOCKHAK KITCHEN SINK - TEST ALL 84 TAGS
@@ -146,4 +146,140 @@ class Controller {
 // --- 6. Macro & Special ---
 #define MACRO_NAME 10           // macroName
 const invalid = @#$;            // invalid
-const special = \f;             // special`
+const special = \f;             // special`,
+html: `<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CodeMirror HTML Coverage</title>
+
+  <!-- Link + attributes -->
+  <link rel="stylesheet" href="styles.css" media="all" />
+
+  <!-- Style block (CSS embedding) -->
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .container { display: flex; gap: 10px; }
+    #main { padding: 10px; }
+    [data-active="true"] { color: green; }
+  </style>
+
+  <!-- Script block -->
+  <script type="module">
+    export const test = () => {
+      console.log("inline script");
+    };
+  </script>
+</head>
+
+<body class="app-body dark-mode" id="root">
+
+  <!-- Comment -->
+  <!-- This is a comment -->
+
+  <!-- Structural tags -->
+  <header class="header">
+    <nav>
+      <ul>
+        <li><a href="#" target="_blank" rel="noopener">Link</a></li>
+        <li><a href="#section">Anchor</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="container" data-active="true">
+    
+    <!-- Text content -->
+    <section>
+      <h1>Heading 1</h1>
+      <p>This is a <strong>paragraph</strong> with <em>inline</em> elements.</p>
+      <span class="inline-span">Span text</span>
+      <br />
+      <hr />
+    </section>
+
+    <!-- Media -->
+    <section>
+      <img src="image.jpg" alt="Sample" width="100" height="100"/>
+      <video controls autoplay muted>
+        <source src="video.mp4" type="video/mp4" />
+      </video>
+      <audio controls>
+        <source src="audio.mp3" type="audio/mpeg" />
+      </audio>
+    </section>
+
+    <!-- Forms -->
+    <section>
+      <form action="/submit" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <input type="checkbox" checked />
+        <input type="radio" name="opt" />
+
+        <select name="options">
+          <option value="1">One</option>
+          <option value="2" selected>Two</option>
+        </select>
+
+        <textarea rows="4" cols="30">Text area</textarea>
+
+        <button type="submit" disabled>Submit</button>
+      </form>
+    </section>
+
+    <!-- Tables -->
+    <section>
+      <table border="1">
+        <thead>
+          <tr><th>Col1</th><th>Col2</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>A</td><td>B</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Semantic -->
+    <article>
+      <h2>Article</h2>
+      <p>Some content</p>
+    </article>
+
+    <aside>Sidebar</aside>
+
+    <!-- Inline styles -->
+    <div style="color: red; background: #000;">
+      Inline styled div
+    </div>
+
+    <!-- Data attributes -->
+    <div data-user-id="123" data-role="admin"></div>
+
+    <!-- Entities -->
+    <p>&copy; &nbsp; &lt; &gt; &amp;</p>
+
+    <!-- Template -->
+    <template id="tpl">
+      <div class="template-content">Template</div>
+    </template>
+
+    <!-- SVG -->
+    <svg width="100" height="100">
+      <circle cx="50" cy="50" r="40" stroke="black" fill="red"/>
+    </svg>
+
+  </main>
+
+  <footer>
+    <p>Footer content</p>
+  </footer>
+
+  <!-- Script with attributes -->
+  <script src="app.js" defer async></script>
+
+</body>
+</html>`
+}

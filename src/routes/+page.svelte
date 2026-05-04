@@ -3,4 +3,5 @@
   let {data}= $props();
 </script>
 
-<CodeBlock code={data.code} highlightedCode={data.highlightedCode}/>
+<CodeBlock code={data.jsx.code} highlightedCode={data.jsx.highlightedCode}/>
+<CodeBlock code={data.html.code} highlightedCode={data.html.highlightedCode}/>
