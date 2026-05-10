@@ -52,7 +52,7 @@
         parent: container
       });
 
-	  // isInteractive = true;
+	  isInteractive = true;
 
     } catch (err) {
       console.error("Manual Initialization Crash:", err);

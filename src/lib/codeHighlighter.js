@@ -24,7 +24,7 @@ export const getHighlightedCode = (code, language) => {
     default:
       langServer = javascript({jsx: true});
   }
-  // const lang = javascript({ jsx: true });
+  
   const parser = langServer.language.parser;
   const tree = parser.parse(code);
 
