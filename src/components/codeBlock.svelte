@@ -14,21 +14,39 @@
       // 1. Import modules individually to see exactly what is failing
       const ViewPkg = await import('@codemirror/view');
       const StatePkg = await import('@codemirror/state');
-      const LangPkg = await import('@codemirror/lang-javascript');
+      const LangPkgJS = await import('@codemirror/lang-javascript');
+      const LangPkgHTML = await import('@codemirror/lang-html');
       const HighlightPkg = await import('@codemirror/language');
       const LezerPkg = await import('@lezer/highlight');
 
       // 2. Destructure with fallbacks to avoid "undefined" errors
       const { EditorView, basicSetup } = ViewPkg;
       const { EditorState } = StatePkg;
-      const { javascript } = LangPkg;
+      const { javascript } = LangPkgJS;
+      const { html } = LangPkgHTML;
       const { syntaxHighlighting, HighlightStyle } = HighlightPkg;
       const { tags: t } = LezerPkg;
+      let langServer;
+      switch(language){
+        case("javascript"):
+        case("typescript"):
+        case("js"):
+        case("ts"):
+        case("jsx"):
+        case("tsx"):
+          langServer = javascript({jsx: true});
+          break;
+        case ("html"):
+          langServer = html();
+          break;
+        default:
+          langServer = javascript({jsx: true});
+      }
 
       // 4. Build the extension list and filter out any accidental undefineds
       const extensions = [
         basicSetup,
-        javascript({ jsx: true }),
+        langServer,
         syntaxHighlighting ? syntaxHighlighting(bodhakHighlightStyle) : null,
         EditorView.theme({
           "&": { height: "100%" },
