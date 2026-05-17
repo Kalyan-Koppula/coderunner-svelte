@@ -2,6 +2,7 @@
 
 @layer base {
   :root {
+    --code-cursor: hsl(0, 0%, 12%);
     --code-bg: hsl(0, 0%, 100%);
     --code-text: hsl(0, 0%, 0%);
     --code-keyword: hsl(288, 100%, 43%);
@@ -20,8 +21,11 @@
     --code-paren: hsl(120, 50%, 38%);
     --code-tagName: var(--code-angleBracket);
   }
+}
 
-  .dark {
+@media (prefers-color-scheme: dark){
+  :root {
+    --code-cursor: hsl(0, 0%, 100%);
     --code-bg: hsl(0, 0%, 12%);
     --code-text: hsl(0, 0%, 78%);
     --code-keyword: hsl(305, 35%, 65%);
