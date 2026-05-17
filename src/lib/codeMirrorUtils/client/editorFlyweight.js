@@ -1,5 +1,4 @@
-// src/lib/editorFlyweight.js
-import { bodhakHighlightStyle } from '$lib';
+import { languageLoaders, normalizeLanguage, bodhakHighlightStyle } from '../common';
 
 // Global cache for core framework and active language extensions
 let coreModulesPromise = null;
@@ -27,54 +26,6 @@ async function loadCoreModules() {
   })();
 
   return coreModulesPromise;
-}
-
-/**
- * 2. On-Demand Language Registry: Defines how to fetch each language package.
- * These imports only trigger over the network when the function execution is called.
- */
-const languageLoaders = {
-  javascript: async () => {
-    const { javascript } = await import('@codemirror/lang-javascript');
-    return javascript({ jsx: true });
-  },
-  typescript: async () => {
-    const { javascript } = await import('@codemirror/lang-javascript');
-    return javascript({ jsx: true, typescript: true });
-  },
-  html: async () => {
-    const { html } = await import('@codemirror/lang-html');
-    return html();
-  },
-  css: async () => {
-    const { css } = await import('@codemirror/lang-css');
-    return css();
-  },
-  json: async () => {
-    const { json } = await import('@codemirror/lang-json');
-    return json();
-  }
-//   python: async () => {
-//     const { python } = await import('@codemirror/lang-python');
-//     return python();
-//   },
-//   svelte: async () => {
-//     // Note: Svelte CodeMirror support typically comes from community packages 
-//     // like @replit/codemirror-lang-svelte or similar integrations.
-//     const { svelte } = await import('@replit/codemirror-lang-svelte');
-//     return svelte();
-//   }
-};
-
-/**
- * Helper to normalize language alias configurations
- */
-function normalizeLanguage(lang) {
-  const lower = (lang || '').toLowerCase().trim();
-  if (['js', 'jsx', 'javascript'].includes(lower)) return 'javascript';
-  if (['ts', 'tsx', 'typescript'].includes(lower)) return 'typescript';
-  if (languageLoaders[lower]) return lower;
-  return 'javascript'; // Fallback default
 }
 
 /**

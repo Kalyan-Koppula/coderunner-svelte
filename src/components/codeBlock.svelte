@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte';
-  import { mountFlyweightEditor } from '$lib/editorFlyweight';
+  import { mountFlyweightEditor } from '$lib/codeMirrorUtils/client';
   
   // Scoped Component Extrinsic Inputs
   let { language, code, highlightedCode } = $props();
@@ -45,6 +45,6 @@
 
 <pre bind:this={container} class="cm-s-custom">
   {#if !isInteractive}
-    {@html highlightedCode} 
+    {@html highlightedCode}
   {/if}
 </pre>

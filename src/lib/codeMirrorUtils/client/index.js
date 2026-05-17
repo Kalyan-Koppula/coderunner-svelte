@@ -1,0 +1,1 @@
+export { mountFlyweightEditor } from './editorFlyweight';
