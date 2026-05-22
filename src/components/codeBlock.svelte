@@ -3,7 +3,7 @@
   import { mountFlyweightEditor } from '$lib/codeMirrorUtils/client';
   
   // Scoped Component Extrinsic Inputs
-  let { language, code, highlightedCode } = $props();
+  let { language, code, highlightedCode, hydrate = true } = $props();
   
   // Isolated Local Component State Instances
   let container = $state(null);
@@ -22,7 +22,7 @@
         
         if (active) {
           view = editorView;
-          isInteractive = true;
+          if(hydrate) isInteractive = true;
         } else {
           editorView.destroy();
         }
