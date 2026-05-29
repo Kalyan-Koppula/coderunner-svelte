@@ -10,6 +10,7 @@ export const getHighlightedCode = async (code, language) => {
   const serverHighlighter = tagHighlighter(bodhakTagClasses);
 
   let htmlOutput = "";
+  let lineCount = 1;
 
   highlightCode(
     code,
@@ -19,8 +20,11 @@ export const getHighlightedCode = async (code, language) => {
       const escaped = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
       htmlOutput += classes ? `<span class="${classes}">${escaped}</span>` : escaped;
     },
-    () => htmlOutput += "\n"
+    () => {
+      htmlOutput += "\n";
+      lineCount++;
+    }
   );
 
-  return htmlOutput;
+  return {htmlOutput, lineCount};
 }

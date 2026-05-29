@@ -54,7 +54,37 @@ pre.cm-s-custom {
   @apply font-mono text-sm leading-[1.4] p-4 rounded-lg overflow-x-auto transition-colors duration-200;
   background-color: var(--code-bg);
   color: var(--code-text);
+  display: flex;
 }
+
+.cm-fold-marker {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+
+  background-color: currentColor;
+  mask-image: url('/static/icons/chevron-down.svg');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  -webkit-mask-image: url('/static/icons/chevron-down.svg');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.cm-fold-marker.is-closed {
+  transform: rotate(0deg);
+}
+
+.cm-fold-marker.is-open {
+  transform: rotate(-90deg);
+}
+
 
 /* Lezer Token Mappings */
 .tok-keyword, .tok-moduleKeyword, .tok-controlKeyword, .tok-operatorKeyword  { color: var(--code-keyword); }

@@ -88,7 +88,13 @@ async function getSharedExtensions(language) {
     
     // Default gutter layout for line numbers and folding
     core.lineNumbers(),
-    core.foldGutter(),
+    core.foldGutter({
+      markerDOM: (open) => {
+        const icon = document.createElement("span");
+        icon.className = `cm-fold-marker ${open ? "is-open" : "is-closed"}`;
+        return icon;
+      }
+    }),
 
     // Pipeline Keyboard Event Interceptors
     core.keymap.of([

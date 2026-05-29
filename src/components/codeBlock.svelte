@@ -3,7 +3,7 @@
   import { mountFlyweightEditor } from '$lib/codeMirrorUtils/client';
   
   // Scoped Component Extrinsic Inputs
-  let { language, code, highlightedCode, hydrate = true } = $props();
+  let { language, code, highlightedCode, lineCount = 1, hydrate = true } = $props();
   
   // Isolated Local Component State Instances
   let container = $state(null);
@@ -22,7 +22,7 @@
         
         if (active) {
           view = editorView;
-          if(hydrate) isInteractive = true;
+          isInteractive = true;
         } else {
           editorView.destroy();
         }
@@ -31,7 +31,7 @@
       }
     }
 
-    init();
+    hydrate && init();
 
     // Clean up local editor instance state on component destroy
     return () => {
@@ -45,6 +45,12 @@
 
 <pre bind:this={container} class="cm-s-custom">
   {#if !isInteractive}
-    {@html highlightedCode}
+    <div class="staticCode" style="--linedigits: {Math.ceil(Math.log10(lineCount))}">{@html highlightedCode}</div>
   {/if}
 </pre>
+
+<style>
+  .staticCode {
+    padding-left: calc( calc(var(--linedigits) * 9px) + 32px);
+  }
+</style>
