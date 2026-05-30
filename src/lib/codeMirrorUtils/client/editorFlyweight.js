@@ -46,7 +46,9 @@ async function loadCoreModules() {
       moveLineUp: CommandsPkg.moveLineUp,
       moveLineDown: CommandsPkg.moveLineDown,
       copyLineUp: CommandsPkg.copyLineUp,
-      copyLineDown: CommandsPkg.copyLineDown
+      copyLineDown: CommandsPkg.copyLineDown,
+      history: CommandsPkg.history,
+      historyKeymap: CommandsPkg.historyKeymap,
     };
   })();
 
@@ -85,6 +87,7 @@ async function getSharedExtensions(language) {
     // Core functional settings
     core.drawSelection(),
     core.closeBrackets(),
+    core.history(),
     
     // Default gutter layout for line numbers and folding
     core.lineNumbers(),
@@ -126,7 +129,7 @@ async function getSharedExtensions(language) {
       
       // Selection overrides 
       "&.cm-focused .cm-selectionBackground, ::selection": {
-        backgroundColor: "rgba(255, 255, 255, 0.15) !important"
+        backgroundColor: "var(--code-selection-background) !important"
       },
 
       // Minimal theme layout, leaving gutter and fold UI to CodeMirror defaults

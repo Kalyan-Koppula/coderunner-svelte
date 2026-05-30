@@ -20,6 +20,7 @@
     --code-definitionKeyword: hsl(240, 100%, 50%);
     --code-paren: hsl(120, 50%, 38%);
     --code-tagName: var(--code-angleBracket);
+    --code-selection-background: hsla(196, 44%, 64%, 0.58);
   }
 }
 
@@ -43,7 +44,19 @@
     --code-definitionKeyword: hsl(207, 61%, 59%);
     --code-paren: hsl(302, 59%, 65%);
     --code-tagName: var(--code-definitionKeyword);
+    --code-selection-background: hsla(195, 100%, 98%, 0.617);
   }
+}
+
+/* Utilities */
+
+@utility mask-icon {
+    mask-image: var(--icon);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    -webkit-mask-image: var(--icon);
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
 }
 
 * {
@@ -54,7 +67,6 @@ pre.cm-s-custom {
   @apply font-mono text-sm leading-[1.4] p-4 rounded-lg overflow-x-auto transition-colors duration-200;
   background-color: var(--code-bg);
   color: var(--code-text);
-  display: flex;
 }
 
 .cm-fold-marker {
